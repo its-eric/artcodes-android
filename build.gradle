@@ -19,9 +19,10 @@
 buildscript {
 	repositories {
 		jcenter()
-	}
+        google()
+    }
 	dependencies {
-		classpath 'com.android.tools.build:gradle:2.3.3'
+		classpath 'com.android.tools.build:gradle:3.2.0'
 	}
 }
 
@@ -54,29 +55,10 @@ dependencies {
 
 android {
 	compileSdkVersion 25
-	buildToolsVersion '25.0.2'
+	buildToolsVersion '28.0.2'
 
 	dataBinding {
 		enabled = true
-	}
-
-	signingConfigs {
-		release {
-			storeFile file(project.property('keystore'))
-			storePassword project.property('keystore.password')
-			keyAlias project.property('key.alias')
-			keyPassword project.property('key.password')
-            v2SigningEnabled false
-		}
-	}
-
-	buildTypes {
-		release {
-			signingConfig signingConfigs.release
-		}
-		debug {
-			signingConfig signingConfigs.release
-		}
 	}
 
 	defaultConfig {
@@ -85,7 +67,6 @@ android {
 		versionCode 400083
 		minSdkVersion 15
 		targetSdkVersion 25
-		signingConfig signingConfigs.release
 	}
 
 	lintOptions {
